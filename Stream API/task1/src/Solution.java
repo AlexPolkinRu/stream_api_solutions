@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Solution {
@@ -22,7 +23,11 @@ public class Solution {
     }
 
     private static List<String> allReadingTasks(List<Task> tasks) {
-        return null;
         // Ваш код здесь
+        return tasks.stream()
+                .filter(element -> element.getType() == TaskType.READING)
+                .sorted(Comparator.comparing(Task::getCreatedOn))
+                .map(Task::getTitle)
+                .toList();
     }
 }

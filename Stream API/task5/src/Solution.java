@@ -7,9 +7,9 @@ import java.util.List;
 public class Solution {
 
     /**
-    *Подсчитайте количество задач имеющих тег books
-    *Решить необходимо в 1 stream.
-    */
+     * Подсчитайте количество задач имеющих тег books
+     * Решить необходимо в 1 stream.
+     */
 
     public static void main(String[] args) {
         Task task1 = new Task(1, "Read Version Control with Git book", TaskType.READING, LocalDate.of(2015, Month.JULY, 1)).addTag("git").addTag("reading").addTag("books");
@@ -22,12 +22,14 @@ public class Solution {
         List<Task> tasks2 = Arrays.asList(task1, task2, task3, task4, task5);
         List<Task> tasks3 = Arrays.asList(task1, task2, task3, task4, task5);
 
-
         System.out.println(allReadingTasks(List.of(tasks1, tasks2, tasks3)));
     }
 
     private static Long allReadingTasks(List<List<Task>> tasks) {
-        return null;
         // Ваш код здесь
+        return tasks.stream()
+                .flatMap(Collection::stream)
+                .filter(e -> e.getTags().contains("books"))
+                .count();
     }
 }

@@ -7,7 +7,7 @@ public class Task {
 
     private final String title;
 
-    private final  TaskType type;
+    private final TaskType type;
 
     private final LocalDate createdOn;
 
@@ -26,7 +26,7 @@ public class Task {
     }
 
 
-    public Task addTag(String tag){
+    public Task addTag(String tag) {
         this.tags.add(tag);
         return this;
     }

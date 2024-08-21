@@ -23,7 +23,10 @@ public class Solution {
     }
 
     private static List<String> allReadingTasks(List<Task> tasks) {
-        return null;
         // Ваш код здесь
+        return tasks.stream()
+                .flatMap(e->e.getTags().stream())
+                .distinct()
+                .toList();
     }
 }
